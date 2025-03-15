@@ -8,10 +8,9 @@ class FAppbar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.firstIcon = Iconsax.notification_bing_outline,
     this.secondIcon = Iconsax.shopping_cart_outline,
-    this.backButton = false, required this.title,
+    this.backButton = false,
   });
 
-  final String title;
   final IconData firstIcon;
   final IconData secondIcon;
   final bool backButton;
@@ -22,15 +21,23 @@ class FAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: backButton ? const Icon(Iconsax.arrow_left_2_outline) : null,
-      title:  Text(
-        title,
+      leading: backButton
+          ? IconButton(
+              icon: const Icon(Iconsax.arrow_left_2_outline),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          : null,
+      title: const Text(
+        "Mega Shop",
         style: TextStyle(
           fontFamily: "DMSans",
           fontWeight: FontWeight.w700,
           color: FColors.oceanBlue,
         ),
       ),
+      centerTitle: true,
       actions: [
         Container(
           padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
@@ -47,7 +54,6 @@ class FAppbar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
       ],
-      centerTitle: true,
       elevation: 2,
       backgroundColor: Colors.white,
     );
