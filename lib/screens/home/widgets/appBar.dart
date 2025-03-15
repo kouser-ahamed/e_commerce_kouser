@@ -6,30 +6,50 @@ import '../../../utils/constants/colors.dart';
 class FAppbar extends StatelessWidget implements PreferredSizeWidget {
   const FAppbar({
     super.key,
+    this.firstIcon = Iconsax.notification_bing_outline,
+    this.secondIcon = Iconsax.shopping_cart_outline,
+    this.backButton = false, required this.title,
   });
+
+  final String title;
+  final IconData firstIcon;
+  final IconData secondIcon;
+  final bool backButton;
+
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
-        "Mega Shop",
+      leading: backButton ? const Icon(Iconsax.arrow_left_2_outline) : null,
+      title:  Text(
+        title,
         style: TextStyle(
           fontFamily: "DMSans",
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w700,
           color: FColors.oceanBlue,
         ),
       ),
-      centerTitle: true,
       actions: [
         Container(
-          padding: const EdgeInsets.all(10),
-          child: Icon(Iconsax.notification_bing_outline)),
+          padding: const EdgeInsets.fromLTRB(10, 10, 5, 10),
+          child: Icon(
+            firstIcon,
+            color: FColors.dark,
+          ),
+        ),
         Container(
-          padding: const EdgeInsets.all(10),
-          child: Icon(Iconsax.shopping_cart_outline)),
+          padding: const EdgeInsets.fromLTRB(5, 10, 10, 10),
+          child: Icon(
+            secondIcon,
+            color: FColors.dark,
+          ),
+        ),
       ],
+      centerTitle: true,
+      elevation: 2,
+      backgroundColor: Colors.white,
     );
   }
 }
