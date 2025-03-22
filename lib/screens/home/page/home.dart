@@ -1,3 +1,4 @@
+import 'package:e_commerch_kouser/screens/home/page/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../widgets/appBar.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -12,10 +13,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
   List<Widget> _pages = [
-    Container(
-      color: Colors.green,
-      height: double.infinity,
-    ),
+    HomeScreen(),
     Container(
       color: Colors.pink,
       height: double.infinity,
